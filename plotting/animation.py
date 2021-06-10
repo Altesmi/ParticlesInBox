@@ -24,7 +24,8 @@ def createAnimation(filename: str, outputfile: str, frames: int):
         if len(ax.patches) > 0:
             [p.remove() for p in reversed(ax.patches)]
         for row in frameData.iterrows():
-            ax.add_patch(plt.Circle((row[1].x, row[1].y), radius=row[1].radius, fill=False, linewidth=1.5))
+            ax.add_patch(plt.Circle((row[1].x, row[1].y),
+                                    radius=row[1].radius, fill=False, linewidth=1.5, edgecolor='r'))
         plt.title('Time = {} s'.format(np.round(times[animationInd[i]], 1)))
 
         return [fig]

@@ -7,6 +7,6 @@ The actual code is simulation of particles bouncing in a box in two dimensions.
 Parts of the code are from [https://scipython.com/blog/two-dimensional-collisions/](https://scipython.com/blog/two-dimensional-collisions/)
 
 
-# Gif of running app.py
+# Animation produced in app.py
 
 ![Gif of particles bouncing in a box](./results50s.gif)
