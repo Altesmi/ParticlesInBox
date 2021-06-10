@@ -1,5 +1,6 @@
-*.gif
+.gif
 *.pyc
 *.csv
+*.swp
 __pycache__/
 .pytest_cache/
