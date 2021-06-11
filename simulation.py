@@ -6,13 +6,7 @@ from particle import Particle
 
 
 class Simulation:
-    """Simulation class for particles in a box.
-
-        Simulations are carried inside a unit rectangle.
-    """
-
-    def __init__(self, numParticles: int, radii: np.ndarray, outputfile: str):
-        """Initializes simulation object
+    """Simulation class for particles in a box. Simulations are carried inside a unit rectangle.
 
         Args:
             numParticles (int): number of particles to be created
@@ -23,8 +17,9 @@ class Simulation:
             time (float): time in the simulation (s)
             outputfile (str): name of the outputfile
             results (pd.DataFrame): results dataframe where the particle positions and velocities are recorded
+    """
 
-        """
+    def __init__(self, numParticles: int, radii: np.ndarray, outputfile: str):
         self.particles: np.ndarray = np.array([], dtype=object)
         self.numParticles = numParticles
         self.time: float = 0.0
@@ -61,7 +56,7 @@ class Simulation:
             Tuple: First element is p1 and second p2, whose velocity has been updated following collision
 
         References:
-            (https://en.wikipedia.org/wiki/Elastic_collision)[https://en.wikipedia.org/wiki/Elastic_collision]
+            https://en.wikipedia.org/wiki/Elastic_collision
         """
         m1 = p1.r**2
         m2 = p2.r**2
@@ -81,8 +76,8 @@ class Simulation:
                 self.particles[i], self.particles[j] = self.handleParticleCollision(self.particles[i],
                                                                                     self.particles[j])
 
-    def run(self, timeStart: float, timeEnd: float, dt: float):
-        """[Advcances particles in box simulation from timeStart to timeEnd with time step dt
+    def run(self, timeStart: float, timeEnd: float, dt: float) -> None:
+        """Advcances particles in box simulation from timeStart to timeEnd with time step dt
 
         Args:
             timeStart (float): Starting time of the simulation
@@ -99,12 +94,19 @@ class Simulation:
             time = time + dt
             self.updateResults(time)
 
-    def updateResults(self, time: float):
+    def updateResults(self, time: float) -> None:
+        """Appends current position and velocity of particles to results dataframe
+
+        Args:
+            time (float): Current time in the simulation. Will be included in results dataframe
+        """
         ind = self.results.shape[0]
 
         for i, p in enumerate(self.particles):
             self.results.loc[ind] = [time, i, p.r, p.x, p.y, p.velx, p.vely]
             ind = ind+1
 
-    def writeOut(self):
+    def writeOut(self) -> None:
+        """Saves the results to csv file. The filename is speciefied in outputfile when creating the simulation object.
+        """
         self.results.to_csv(self.outputfile)

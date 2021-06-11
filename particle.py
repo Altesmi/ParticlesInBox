@@ -2,17 +2,23 @@ import numpy as np
 
 
 class Particle:
-    """ Models real world molecules as elastic circles """
-
-    def __init__(self, x: float, y: float, velx: float, vely: float, radius: float):
-        """Initializes particle
+    """ Models real world molecules as elastic circles.
 
         Args:
             x (float): coordinate of the horizontal axis (L)
             y (float): coordinate of the vertical axis (L)
-            velx (float): Velocity in the horizontal direction (m/s)
-            vely (float): Velocity in the vertical direction (m/s)
+            velx (float): Velocity in the horizontal direction (L/s)
+            vely (float): Velocity in the vertical direction (L/s)
             radius (float): radius of the particle (L)
+        Attributes:
+            coordinates (np.ndarray): x and y coordinates of the circle (L)
+            vel (np.ndarray): velocity of the particle (L/s)
+            r (float): radius (L)
+
+    """
+
+    def __init__(self, x: float, y: float, velx: float, vely: float, radius: float):
+        """Initializes particle
         """
 
         self.coordinates = np.array((x, y))
