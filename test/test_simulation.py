@@ -25,8 +25,8 @@ def test_simulation():
 
 @pytest.fixture(scope="function")
 def test_large_simulation():
-    numParticles = 20
-    radii = np.repeat([0.05], repeats=numParticles)
+    numParticles = 40
+    radii = np.repeat([0.01], repeats=numParticles)
     outputfile = 'test.csv'
     return Simulation(numParticles=numParticles, radii=radii, outputfile=outputfile)
 
@@ -37,9 +37,17 @@ def test_checkAndhandleParticleCollision(test_simulation):
     assert pytest.approx(test_simulation.particles[1].velx, rel=1e-10) == 0.1
 
 
-def test_momentum_conservation(test_large_simulation):
-    momentum_start = np.sum(np.array([np.sqrt(np.sum(p.vel**2)) for p in test_large_simulation.particles]))
-    test_large_simulation.run(0, 1, 0.1)
-    momentum_end = np.sum(np.array([np.sqrt(np.sum(p.vel**2)) for p in test_large_simulation.particles]))
+def test_momentum_conservation_x(test_large_simulation):
+    momentum_start = np.sum(np.array([np.abs(p.velx) for p in test_large_simulation.particles]))
+    test_large_simulation.run(0, 0.1, 0.01)
+    momentum_end = np.sum(np.array([np.abs(p.velx) for p in test_large_simulation.particles]))
+
+    assert pytest.approx(momentum_start, rel=1e-10) == pytest.approx(momentum_end, rel=1e-10)
+
+
+def test_momentum_conservation_y(test_large_simulation):
+    momentum_start = np.sum(np.array([np.abs(p.vely) for p in test_large_simulation.particles]))
+    test_large_simulation.run(0, 0.1, 0.01)
+    momentum_end = np.sum(np.array([np.abs(p.vely) for p in test_large_simulation.particles]))
 
     assert pytest.approx(momentum_start, rel=1e-10) == pytest.approx(momentum_end, rel=1e-10)

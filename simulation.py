@@ -58,6 +58,8 @@ class Simulation:
         References:
             https://en.wikipedia.org/wiki/Elastic_collision
         """
+        v1 = p1.vel
+        v2 = p2.vel
         m1 = p1.r**2
         m2 = p2.r**2
         dSquared = np.linalg.norm(p1.coordinates-p2.coordinates)**2
@@ -67,6 +69,12 @@ class Simulation:
             * (p2.coordinates-p1.coordinates) / (m1+m2) / dSquared
         p1.vel = u1
         p2.vel = u2
+        print(v1)
+        print(v2)
+        print(u1)
+        print(u2)
+        print(np.abs(np.sum(np.sum(v1**2)+np.sum(v2**2))-np.sum(np.sum(u1**2)+np.sum(u2**2))))
+
         return (p1, p2)
 
     def checkAndHandleParticleCollisions(self):
@@ -87,7 +95,6 @@ class Simulation:
         time = timeStart
 
         while time <= timeEnd:
-            print(time)
             for i, p in enumerate(self.particles):
                 p.run(dt)
             self.checkAndHandleParticleCollisions()

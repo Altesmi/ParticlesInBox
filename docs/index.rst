@@ -11,13 +11,13 @@ This is an example project to show how to set up scientific computing python pro
 .. image:: ./_static/results50s.gif
    :alt: Animation of circles colliding
 
-In the demo we went through:
+In the demo we will go through:
 
  - Basics of git
  - Unit testing with pytest
  - Pre-commit hooks
- - Setting up simple continuous development pipeline using GitHub actions
- - Sphinx
+ - Setting up simple continuous development pipeline
+ - Making project documentation with Sphinx
  - Publishing documentation in readthedocs.io
 
 .. toctree::
