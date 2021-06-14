@@ -2,7 +2,7 @@ from typing import Tuple
 import numpy as np
 import pandas as pd
 from itertools import combinations
-from .particle import Particle
+from particle import Particle
 
 
 class Simulation:
