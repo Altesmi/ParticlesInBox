@@ -24,8 +24,8 @@ project = 'Particles in box demo'
 copyright = '2021, Olli-Pekka Tikkasalo'
 author = 'Olli-Pekka Tikkasalo'
 
-sys.path.insert(0, os.path.abspath('../'))
-# sys.setrecursionlimit(1500)
+sys.path.insert(0, os.path.abspath('../../ParticlesInBox/'))
+sys.setrecursionlimit(1500)
 
 
 # -- General configuration ---------------------------------------------------
