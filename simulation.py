@@ -115,5 +115,6 @@ class Simulation:
 
     def writeOut(self) -> None:
         """Saves the results to csv file. The filename is speciefied in outputfile when creating the simulation object.
+
         """
         self.results.to_csv(self.outputfile)
