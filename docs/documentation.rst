@@ -3,13 +3,13 @@ Documentation
 
 particle.py
 -------------
-.. automodule:: Particle
+.. automodule:: ParticlesInBox.particle
    :members:
    :undoc-members:
 
 simulation.py
 ----------------
 
-.. automodule:: Simulation
+.. automodule:: ParticlesInBox.simulation
    :members:
    :undoc-members:
