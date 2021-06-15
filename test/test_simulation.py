@@ -42,7 +42,7 @@ def test_momentum_conservation_x(test_large_simulation):
     test_large_simulation.run(0, 0.1, 0.01)
     momentum_end = np.sum(np.array([np.abs(p.velx) for p in test_large_simulation.particles]))
 
-    assert pytest.approx(momentum_start, rel=1e-10) == pytest.approx(momentum_end, rel=1e-10)
+    assert pytest.approx(momentum_start, rel=1e-3) == pytest.approx(momentum_end, rel=1e-3)
 
 
 def test_momentum_conservation_y(test_large_simulation):
@@ -50,4 +50,4 @@ def test_momentum_conservation_y(test_large_simulation):
     test_large_simulation.run(0, 0.1, 0.01)
     momentum_end = np.sum(np.array([np.abs(p.vely) for p in test_large_simulation.particles]))
 
-    assert pytest.approx(momentum_start, rel=1e-10) == pytest.approx(momentum_end, rel=1e-10)
+    assert pytest.approx(momentum_start, rel=1e-3) == pytest.approx(momentum_end, rel=1e-3)
